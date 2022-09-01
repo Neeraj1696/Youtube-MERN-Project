@@ -16,6 +16,8 @@ import FlagIcon from '@mui/icons-material/Flag';
 import HelpIcon from '@mui/icons-material/Help';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Link } from 'react-router-dom';
+
 
 const Container = styled.div`
  flex: 1;
@@ -52,6 +54,9 @@ const Item = styled.div`
     gap: 20px;
     cursor: pointer;
     font-size: 13px;
+    &:hover{
+        background-color: ${({ theme }) => theme.soft}
+    }
 `
 const Hr = styled.hr`
 
@@ -95,10 +100,12 @@ const Menu = ({darkMode, setDarkMode}) => {
   return (
     <Container>
     <Wrapper >
+        <Link to="/" style={{textDecoration:"none" ,color:"inherit"}}>
         <Logo>
             <Img src="https://raw.githubusercontent.com/safak/youtube2022/react-video-ui/src/img/logo.png" alt="LOGO IMG" />
              YouTube
         </Logo>
+        </Link>
         <Item>
             <HouseIcon />
             Home
@@ -122,11 +129,13 @@ const Menu = ({darkMode, setDarkMode}) => {
             History
         </Item>
         <Hr />
+
+        <Link  to="/signin" style={{textDecoration:"none" ,color:"inherit"}}>
         <LogIn >
 
 
       
-       <h5>  Sign In to Like,Comment And Subscribes</h5>
+       <h5 >  Sign In to Like,Comment And Subscribes</h5>
    
 <Button>
             <AccountCircleIcon />
@@ -134,6 +143,7 @@ SIGN IN
 </Button>
 
         </LogIn>
+        </Link>
         <Hr />
         <Title>
             <h2>BEST OF YOUTUBE</h2>
@@ -177,7 +187,7 @@ SIGN IN
         </Item>
         <Item onClick={()=> setDarkMode(!darkMode)} >
             <LightModeIcon />
-            Light Mode
+          { darkMode ? "Light Mode":"Dark Mode"}
         </Item>
     </Wrapper>
     </Container>
